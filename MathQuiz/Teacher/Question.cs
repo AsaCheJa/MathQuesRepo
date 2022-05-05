@@ -21,6 +21,20 @@ namespace Teacher
 			MathOp = mathOp;
 		}
 
+		public string[] GetStrArray()
+		{
+			string leftOpStr = LeftOp.ToString();
+			string rightOpStr = RightOp.ToString();
+			string answerStr = Answer.ToString();
+			string[] strArray = new string[5];
+			strArray[0] = leftOpStr;
+			strArray[1] = MathOp;
+			strArray[2] = rightOpStr;
+			strArray[3] = "=";
+			strArray[4] = answerStr;
+			return strArray;
+
+        }
 		public override string ToString()
 		{
 			return Answer + "(" + LeftOp + MathOp + RightOp + ")";
