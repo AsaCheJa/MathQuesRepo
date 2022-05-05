@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace Teacher
 {
@@ -19,51 +20,17 @@ namespace Teacher
 
         private List<MathQues> mathList;
         private int currentMathQues;
+        
         public Form1()
         {
             InitializeComponent();
             
             mathList = new List<MathQues>();
 
-
-            
-
         }
         
-        private void array_DataGridView_Load(object sender, EventArgs e)
-        {
-            List<MathQues> mathList = new List<MathQues>();
-            DataGridViewColumn col = new DataGridViewColumn();
-            // row 1
-            col.Name = "LeftOp";
-            col.HeaderText = "Number 1";
-            col.Width = 80;
-            col.CellTemplate = new DataGridViewTextBoxCell();
-            // row 2
-            col.Name = "MathOp";
-            col.HeaderText = "Math";
-            col.Width = 50;
-            col.CellTemplate = new DataGridViewTextBoxCell();
-            // row 3
-            col.Name = "RightOp";
-            col.HeaderText = "Number 2";
-            col.Width = 80;
-            col.CellTemplate = new DataGridViewTextBoxCell();
-            // row 4
-            col.Name = "Equal";
-            col.HeaderText = " = ";
-            col.Width = 50;
-            col.CellTemplate = new DataGridViewTextBoxCell();
-            // row 5 
-            col.Name = "Answer";
-            col.HeaderText = "Answer";
-            col.Width = 80;
-            col.CellTemplate = new DataGridViewTextBoxCell();
-
-
-
-
-        }
+        
+        
         /*****************************************************************/
         // Method:  ServerTeacher() constructor
         // Purpose:
@@ -86,7 +53,7 @@ namespace Teacher
         // a delegate is a reference variable to a method
         // and used for a call back by the delegate object
         // delegate ref variable is declared in SetText() method below
-        delegate void SetTextCallback(string text);
+        delegate void SetTextCallback(string questionToSend);
         
         public void ServerTeacher()
         {
@@ -153,9 +120,9 @@ namespace Teacher
         private void send_Button_Click(object sender, EventArgs e)
         {
             // send math question in First number, operator and Second number
-            leftOp_TextBox.Text = this.array_DataGridView.CurrentRow.Cells[0].Value.ToString();
-            mathOp_TextBox.Text = this.array_DataGridView.CurrentRow.Cells[1].Value.ToString();
-            rightOp_TextBox.Text = this.array_DataGridView.CurrentRow.Cells[2].Value.ToString();
+            //leftOp_TextBox.Text = this.array_DataGridView.CurrentRow.Cells[0].Value.ToString();
+            //mathOp_ComboBox.Text = this.array_DataGridView.CurrentRow.Cells[1].Value.ToString();
+            //rightOp_TextBox.Text = this.array_DataGridView.CurrentRow.Cells[2].Value.ToString();
 
             // Reference :https://stackoverflow.com/questions/7754569/how-to-fill-textboxes-from-datagridview-on-button-click-event
             int leftOp = 0;
@@ -190,8 +157,14 @@ namespace Teacher
                     MessageBox.Show("Second number is not numeric", "{0} error(s) detected!");
                 }
             }
-        }
-    }
+        } // end send_Button_Click method
+
+
+        
+      
+
+
+    } // end of Form
 
   
-}
+} // end of namespace

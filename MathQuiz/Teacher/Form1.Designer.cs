@@ -57,12 +57,17 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.answer_TextBox = new System.Windows.Forms.TextBox();
             this.rightOp_TextBox = new System.Windows.Forms.TextBox();
-            this.mathOp_TextBox = new System.Windows.Forms.TextBox();
             this.leftOp_TextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.mathOp_ComboBox = new System.Windows.Forms.ComboBox();
+            this.LeftOp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MathOp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RightOp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Equal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -334,6 +339,12 @@
             // 
             this.array_DataGridView.AllowUserToDeleteRows = false;
             this.array_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.array_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LeftOp,
+            this.MathOp,
+            this.RightOp,
+            this.Equal,
+            this.Answer});
             this.array_DataGridView.Location = new System.Drawing.Point(6, 21);
             this.array_DataGridView.Name = "array_DataGridView";
             this.array_DataGridView.ReadOnly = true;
@@ -344,9 +355,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.mathOp_ComboBox);
             this.groupBox1.Controls.Add(this.answer_TextBox);
             this.groupBox1.Controls.Add(this.rightOp_TextBox);
-            this.groupBox1.Controls.Add(this.mathOp_TextBox);
             this.groupBox1.Controls.Add(this.leftOp_TextBox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -374,14 +385,6 @@
             this.rightOp_TextBox.Name = "rightOp_TextBox";
             this.rightOp_TextBox.Size = new System.Drawing.Size(129, 34);
             this.rightOp_TextBox.TabIndex = 1;
-            // 
-            // mathOp_TextBox
-            // 
-            this.mathOp_TextBox.Location = new System.Drawing.Point(152, 63);
-            this.mathOp_TextBox.Multiline = true;
-            this.mathOp_TextBox.Name = "mathOp_TextBox";
-            this.mathOp_TextBox.Size = new System.Drawing.Size(129, 34);
-            this.mathOp_TextBox.TabIndex = 1;
             // 
             // leftOp_TextBox
             // 
@@ -427,6 +430,60 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "First number:";
             // 
+            // mathOp_ComboBox
+            // 
+            this.mathOp_ComboBox.FormattingEnabled = true;
+            this.mathOp_ComboBox.ItemHeight = 16;
+            this.mathOp_ComboBox.Items.AddRange(new object[] {
+            "+",
+            "-",
+            "*",
+            "/"});
+            this.mathOp_ComboBox.Location = new System.Drawing.Point(152, 68);
+            this.mathOp_ComboBox.Name = "mathOp_ComboBox";
+            this.mathOp_ComboBox.Size = new System.Drawing.Size(129, 24);
+            this.mathOp_ComboBox.TabIndex = 2;
+            // 
+            // LeftOp
+            // 
+            this.LeftOp.HeaderText = "Number 1";
+            this.LeftOp.MinimumWidth = 6;
+            this.LeftOp.Name = "LeftOp";
+            this.LeftOp.ReadOnly = true;
+            this.LeftOp.Width = 95;
+            // 
+            // MathOp
+            // 
+            this.MathOp.HeaderText = "Math";
+            this.MathOp.MinimumWidth = 6;
+            this.MathOp.Name = "MathOp";
+            this.MathOp.ReadOnly = true;
+            this.MathOp.Width = 55;
+            // 
+            // RightOp
+            // 
+            this.RightOp.HeaderText = "Number 2";
+            this.RightOp.MinimumWidth = 6;
+            this.RightOp.Name = "RightOp";
+            this.RightOp.ReadOnly = true;
+            this.RightOp.Width = 95;
+            // 
+            // Equal
+            // 
+            this.Equal.HeaderText = "=";
+            this.Equal.MinimumWidth = 6;
+            this.Equal.Name = "Equal";
+            this.Equal.ReadOnly = true;
+            this.Equal.Width = 55;
+            // 
+            // Answer
+            // 
+            this.Answer.HeaderText = "Answer";
+            this.Answer.MinimumWidth = 6;
+            this.Answer.Name = "Answer";
+            this.Answer.ReadOnly = true;
+            this.Answer.Width = 95;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -469,7 +526,6 @@
         private System.Windows.Forms.Button search_Button;
         private System.Windows.Forms.TextBox answer_TextBox;
         private System.Windows.Forms.TextBox rightOp_TextBox;
-        private System.Windows.Forms.TextBox mathOp_TextBox;
         private System.Windows.Forms.TextBox leftOp_TextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -486,6 +542,12 @@
         private System.Windows.Forms.Button exit_Button;
         private System.Windows.Forms.TextBox binaryTree_TextBox;
         private System.Windows.Forms.TextBox linkedList_TextBox;
+        private System.Windows.Forms.ComboBox mathOp_ComboBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LeftOp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MathOp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RightOp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Equal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Answer;
     }
 }
 
