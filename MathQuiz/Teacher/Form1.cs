@@ -20,23 +20,7 @@ namespace Teacher
 
         private List<MathQues> mathList;
         private int currentMathQues;
-        
-        public Form1()
-        {
-            InitializeComponent();
-            
-            mathList = new List<MathQues>();
 
-        }
-        
-        
-        
-        /*****************************************************************/
-        // Method:  ServerTeacher() constructor
-        // Purpose:
-        // Input:
-        // Outputs:    
-        /****************************************************************/
         public bool exitStatus = false;
         public const int BYTE_SIZE = 1024;
         public const int PORT_NUMBER = 8888;
@@ -54,8 +38,25 @@ namespace Teacher
         // and used for a call back by the delegate object
         // delegate ref variable is declared in SetText() method below
         delegate void SetTextCallback(string questionToSend);
-        
-        public void ServerTeacher()
+        public Form1()
+        {
+            InitializeComponent();
+
+            mathList = new List<MathQues>();
+            StartTeacher();
+        }
+
+
+
+        /*****************************************************************/
+        // Method:  ServerTeacher() constructor
+        // Purpose:
+        // Input:
+        // Outputs:    
+        /****************************************************************/
+
+
+        public void StartTeacher()
         {
             try
             {
@@ -83,13 +84,13 @@ namespace Teacher
 
         public void ReceiveStream()
         {
-            byte[] bytesReceived = new byte [BYTE_SIZE];
+            byte[] bytesReceived = new byte[BYTE_SIZE];
             // loop to read any incoming messages
             while (!exitStatus)
             {
                 try
                 {
-                    int bytesRead = netStream.Read (bytesReceived, 0, bytesReceived.Length);
+                    int bytesRead = netStream.Read(bytesReceived, 0, bytesReceived.Length);
                     this.SetText(Encoding.ASCII.GetString(bytesReceived, 0, bytesRead));
                 }
                 catch (System.IO.IOException)
@@ -99,7 +100,7 @@ namespace Teacher
                 }
             }
         }
-        
+
         private void SetText(string questionToSend)
         {
             // InvokeRequired compares the thread ID of the 
@@ -113,19 +114,57 @@ namespace Teacher
             }
             else
             {
-                this.binaryTree_TextBox.Text += questionToSend + Environment.NewLine;
+                this.binaryTree_TextBox.Text += questionToSend;
             }
         }
-
+       
+            
+            
+        
         private void send_Button_Click(object sender, EventArgs e)
         {
+            string questionToSend = leftOp_TextBox.Text + mathOp_ComboBox.Text + rightOp_TextBox.Text + " = " + answer_TextBox.Text;
+            if (questionToSend.Length > 0)
+            {
+                string strToSend = questionToSend;
+                byte[] bytesToSend = Encoding.ASCII.GetBytes(strToSend);
+                netStream.Write(bytesToSend, 0,bytesToSend.Length);
+
+            }
             // send math question in First number, operator and Second number
             //leftOp_TextBox.Text = this.array_DataGridView.CurrentRow.Cells[0].Value.ToString();
             //mathOp_ComboBox.Text = this.array_DataGridView.CurrentRow.Cells[1].Value.ToString();
             //rightOp_TextBox.Text = this.array_DataGridView.CurrentRow.Cells[2].Value.ToString();
 
             // Reference :https://stackoverflow.com/questions/7754569/how-to-fill-textboxes-from-datagridview-on-button-click-event
-            int leftOp = 0;
+           
+            
+            
+            // create mathQues object 
+            string mathOp = mathOp_ComboBox.SelectedItem.ToString();
+            int leftOp = Int32.Parse(leftOp_TextBox.Text.ToString());
+            int rightOp = Int32.Parse(rightOp_TextBox.Text.ToString());
+            int answer = 0;
+            switch (mathOp)
+            {
+                case "+":
+                    answer = leftOp + rightOp;
+                    break;
+
+                case "-":
+                    answer = leftOp - rightOp;
+                    break ;
+
+                case "*":
+                    answer = leftOp * rightOp;
+                    break;
+
+                case "/":
+                    answer = leftOp / rightOp;
+                    break;
+
+
+            }
             if (String.IsNullOrEmpty(leftOp_TextBox.Text))
             {
                 MessageBox.Show("First number is missing", "{0} error(s) detected!");
@@ -141,7 +180,7 @@ namespace Teacher
                     MessageBox.Show("First number is not numeric", "{0} error(s) detected!");
                 }
             }
-            int rightOp = 0;
+            
             if (String.IsNullOrEmpty(rightOp_TextBox.Text))
             {
                 MessageBox.Show("Second number is missing", "{0} error(s) detected!");
@@ -157,6 +196,8 @@ namespace Teacher
                     MessageBox.Show("Second number is not numeric", "{0} error(s) detected!");
                 }
             }
+            
+
         } // end send_Button_Click method
 
 
