@@ -1,0 +1,33 @@
+         /***************************************************************
+          Hashtable
+         ***************************************************************/
+            Hashtable quesHashTable = new Hashtable();
+            quesHashTable.Add(q1.QuestionToSend(), q1.ToString());
+            quesHashTable.Add(q2.QuestionToSend(), q2.ToString());
+
+            Console.Write("Enter math question to find -->");
+            string quesToFind = Console.ReadLine();
+            Console.WriteLine();
+	        bool foundStatus = quesHashTable.ContainsKey(quesToFind);
+
+            if (foundStatus)
+            {
+                Console.WriteLine(quesToFind + "is found!");
+            }
+            else
+            {
+                Console.WriteLine(quesToFind + "NOT found!");
+            }
+			
+			
+			if (list.count == 0
+			return
+			
+			else
+						
+			datagridview.row.cleare()
+			for (int i = 0; i < questionlist.count; i++
+			table.Rows.Add(questionLidt[i].GetStrArray)
+			refresh
+			
+			

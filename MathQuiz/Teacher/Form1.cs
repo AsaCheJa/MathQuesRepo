@@ -163,8 +163,13 @@ namespace Teacher
                     answer = leftOp / rightOp;
                     break;
 
+<<<<<<< HEAD
             }
 
+=======
+
+            }
+>>>>>>> 8bd55779672fd28754a2f57e49212e1ebf86866e
             if (String.IsNullOrEmpty(leftOp_TextBox.Text))
             {
                 MessageBox.Show("First number is missing", "{0} error(s) detected!");

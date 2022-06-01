@@ -1,0 +1,82 @@
+/***********************************************************************************************************/
+ICTPRG523 AT1 Networked Math Quiz Software Project
+/***********************************************************************************************************/
+Suggested task breakdown
+
+1. Read specifications of project
+
+2. Build GUI forms (add all controls) for both teacher and student apps
+   Create 1 Visual Studio Solution containing 2 projects
+
+3. Create Math Question class (MathQues) with IComparable interface implemented 
+   CompareTo() method
+   Class contains 4 data elements: int leftOperator, int rightOperator, string mathOperator, int answer
+   Create public properties for these (set up get and set methods)
+
+4. Create basic networking and test to establish connection!
+   --- use provided chat code to start with
+   --- test a very simple message (send/receive)
+
+5. Declare data structures required for Teacher app
+   --- List<MathQues>
+   --- LinkedList<MathQues>
+   --- BinaryTree<MathQues>
+   --- HashSet<string>
+
+   Also declare MathQues object
+   --- MathQues currentMathQues;
+
+   In the constructor method
+   --- initialise each (the current math question will be null)
+
+6. Send math question and receive "y" || "n" response
+6.1 Send a math question to the student app from the teacher
+    --- create a ValidateMathQuestion() method
+        checks the content of the math ques operand textboxes
+        returns true if contents are good; false if not
+    --- calculate the answer
+    --- create an instance for the currentMathQues
+    --- add instance to List<MathQues> object
+    --- add instance to BinaryTree<MathQues> object
+    --- send question string to student app
+    --- student app needs to properly display the math ques
+        and store the answer as a variable
+        this is later checked with the actual student response
+
+6.2 Set up student response to Math Question
+    --- set up a ValidateAnswer() method
+        checks the content of the answer textbox
+        returns true if numeric; false if not
+    --- check the student's response against the answer
+        sends "y" if they match and "n" if they don't match
+
+6.3 Set up Teacher app to deal with "y" or "n" messages
+    --- use the SetText() method to deal with the "y" || "n"
+    --- if "n", then add current question to linked list
+
+7. Sorting
+   --- teacher app uses the List<MathQues> for the purpose of sorting
+   --- List can be easily converted to an array for a sorting algorithm to be applied to it
+   --- You must create the code for the 3 sorting algorithms - Bubble, Selection, Insertion for example
+   --- sorted array can be reassigned to the List and displayed in the Data Grid View (table)
+   --- Use 2 sort algorithms to sort in ascending order, the other in descending order
+
+8. Display Linked List (incorrect math questions attempted)
+   --- Linked list only contains the math question objects that were incorrectly answered
+   --- LinkedList<MathQues>
+
+9. Search
+   --- Use a HashSet or use the Binary Tree to search for a math question - your choice
+
+10. Pre-order, In-order and Post-Order operations (use the Binary Tree for this)
+    --- Display
+    --- Save
+
+11. Testing
+
+12. Documentation
+
+13. Assignment submission
+
+/***********************************************************************************************************/
+

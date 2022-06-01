@@ -1,0 +1,37 @@
+if (MyFriendValid() == false)
+            {
+                return;
+            }
+            else
+            {
+                // prompt the user to proceed with the save
+                DialogResult dialogResult = MessageBox.Show("Do you wish to add this record?", "NEW MY FRIEND RECORD", MessageBoxButtons.YesNo);
+                // if Yes button clicked, then proceed
+                if (dialogResult == DialogResult.Yes)
+                {
+                    // proceed
+                    // get all 5 values for the add my friend details
+                    string name = name_TextBox.Text;
+                    string likes = likes_TextBox.Text;
+                    string dislikes = dislikes_TextBox.Text;
+                    string dobDay = dobDay_TextBox.Text;
+                    string dobMonth = dobMonth_TextBox.Text;
+
+                    // add new My friend list object
+                    MyFriend newMyFriend = new MyFriend(name, likes, dislikes, dobDay, dobMonth);
+                    // update to the myFriendList
+                    myFriendList.Add(newMyFriend);
+
+                    // CSV string version of newMyFriend
+                    string newMyFrindCSV = newMyFriend.ToCSVString();
+                    // append new MyFriend details to external CSV file
+                    using (StreamWriter file = File.AppendText(@"MyFriendData.csv"))
+                    {
+                        file.WriteLine(newMyFrindCSV);
+                    }
+                    // re-sort myFamily list
+                    myFriendList.Sort();
+                    // display newly sorted my friend list)
+                    DisplayMyFriendData();
+                    // assign to currentRecord
+                    currentRecord = myFriendList.IndexOf(newMyFriend);

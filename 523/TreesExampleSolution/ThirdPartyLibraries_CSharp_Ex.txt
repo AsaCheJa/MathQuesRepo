@@ -1,0 +1,22 @@
+Binary Tree and Node class exercise
+
+1. Create a third-party library (.dll file) out of the Binary Tree and Node class source code provided
+
+2. Test the library using a Binary Tree data structure (data type of your choice) - use a Console App project
+(Visual Studio C# .NET)
+	- add data to your Binary Tree instance
+		- Add()
+	- test the following Binary Tree methods:
+		- GetCount()
+		- GetHeight()
+		- Contains()
+		- PreOrder()
+		- PostOrder()
+		- InOrder()
+
+3. The Binary Tree and Node class source code files are provided to you by Hans Telford, under the Creative Commons (Attribution 4.0 International) license. Refer: https://creativecommons.org/licenses/by/4.0/
+
+Under this arrangement, include the Attribution statement and the allowances/limitations provided to the developer as part of a header comment in your code.
+
+4. Source another third-party library of your choosing, include it in your Visual Studio project and test it.
+What is the licensing arrangement for it? Include any required statements as to the licensing limitations.

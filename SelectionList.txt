@@ -1,0 +1,24 @@
+ static void DisplayList (List<MathQues> quesList)
+       {
+            Console.WriteLine(ques.QuestionToSend);
+       }
+       static List<MathQues> SelectionSort(List<MathQues> quesList)
+       {
+            // create a array of the input list of math questions
+            MathQues[] mathQuesArray = quesList.ToArray();
+            // Selection Sort
+            for (int i = 0; i < mathQuesArray.Length - 1; i++)
+            {
+                for (int j = i + 1; j < mathQuesArray.Length;) j++)
+                {
+                    if (mathQuesArray[j].Answer < mathQuesArray[i].Answer)
+                    {
+                        MathQues temp = mathQuesArray[j];
+                        mathQuesArray[j] = mathQuesArray[i];
+                        mathQuesArray[i] = temp;
+                    }
+
+                }
+            }
+            return new List<MathQues>(mathQuesArray);
+       }
